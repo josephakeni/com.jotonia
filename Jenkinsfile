@@ -22,7 +22,7 @@ pipeline {
 			id=$(sudo docker run -p 1337:80 -d jotonia:1.1)
 			curl localhost:1337 | grep "jotonia" && echo "Test successfull"
 			echo "deleting container"
-			docker rm -f $id
+			sudo docker rm -f $id
 			echo "container deleted.. all is well"
 			'''
 		}
@@ -31,7 +31,7 @@ pipeline {
                         steps {
                         sh '''
 			echo "tagging image"
-			sudo docker tag jotonia:latest jakeni/jotoniaapp1:v1
+			sudo docker tag jotonia:1.1 jakeni/jotoniaapp1:v1
 			withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'pass', usernameVariable: 'user')]) {
   			echo "pushing container to hub"
 			sudo docker login -u jakeni -p $pass
