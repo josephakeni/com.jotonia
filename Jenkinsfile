@@ -6,7 +6,7 @@ pipeline {
 			  echo 'verifying needed tools are available'
 			sh '''
 			git --version
-			docker -version
+			docker --version
 			'''
                 }
         }
