@@ -16,7 +16,7 @@ pipeline {
 			sh 'sudo docker build -f Dockerfile.prod -t jotonia:1.1 . '
 		}
 	}
-		stage (test container') {
+		stage ('test container') {
 			steps {
 			sh '''
 			id=$(sudo docker run -p 1337:80 -d jotonia:1.1)
