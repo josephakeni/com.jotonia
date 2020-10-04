@@ -27,7 +27,7 @@ pipeline {
 			'''
 		}
 	}
-		stage ("build docker image") {
+		stage ("push docker image") {
                         steps {
                         sh '''
 			echo "tagging image"
