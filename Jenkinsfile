@@ -29,16 +29,15 @@ pipeline {
 	}
 		stage ("push docker image") {
                         steps {
-                        sh '''
+                 
 			echo "tagging image"
-			sudo docker tag jotonia:1.1 jakeni/jotoniaapp1:v1
+			sh 'sudo docker tag jotonia:1.1 jakeni/jotoniaapp1:v1'
 			withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'pass', usernameVariable: 'user')]) {
   			echo "pushing container to hub"
-			sudo docker login -u jakeni -p $pass
-  			sudo docker push jakeni/jotoniaapp1:v1
-  			sudo docker logout
+			sh 'sudo docker login -u jakeni -p $pass'
+  			sh 'sudo docker push jakeni/jotoniaapp1:v1'
+  			sh 'sudo docker logout'
 			}	      
-			'''
                 }
         }
 
