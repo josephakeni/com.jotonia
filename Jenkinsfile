@@ -40,6 +40,11 @@ pipeline {
 			}	      
                 }
         }
+		stage ("deploy docker image") {
+                        steps {
+                        sh 'ssh jakeni@192.168.33.12 sudo docker run -d --rm -p 80:80 jakeni/jotoniaapp1:v1 '
+                }
+        }
 
 
  }
