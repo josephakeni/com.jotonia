@@ -3,10 +3,10 @@ import Hero from '../components/Hero'
 import Banner from '../components/Banner'
 import {Link} from 'react-router-dom'
 
-function Services() {
+function Solutions() {
     return (
         <Hero hero="roomsHero">
-            <Banner title="our services">
+            <Banner title="our solutions">
                 <Link to="/" className="btn-primary">
                     return home
                 </Link>
@@ -15,4 +15,4 @@ function Services() {
     )
 }
 
-export default Services
+export default Solutions

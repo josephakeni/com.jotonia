@@ -37,11 +37,14 @@ pipeline {
 			sh 'sudo docker login -u jakeni -p $pass'
   			sh 'sudo docker push jakeni/jotoniaapp1:v1'
   			sh 'sudo docker logout'
+			echo "clean up container, deleting containers"
+			sudo docker rmi -f $(sudo docker images -a -q)
 			}	      
                 }
         }
 		stage ("deploy docker image") {
                         steps {
+						sh 'ssh jakeni@192.168.33.12 sudo docker rm -f $(sudo docker ps -a -q)'
                         sh 'ssh jakeni@192.168.33.12 sudo docker run -d --rm -p 80:80 jakeni/jotoniaapp1:v1 '
                 }
         }

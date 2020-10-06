@@ -4,9 +4,9 @@ import './App.css';
 // import './resources/css/style.css';
 
 import Home from "./pages/Home"
-import Services from './pages/Services'
+import Solutions from './pages/Solutions'
 import Error from './pages/Error'
-import SingleService from './pages/SingleService'
+import SingleSolution from './pages/SingleSolution'
 import Navbar from './components/Navbar'
 
 import {Route, Switch} from 'react-router-dom'
@@ -17,8 +17,8 @@ function App() {
       <Navbar />
       <Switch>
         <Route exact path="/" component={Home}/>
-        <Route exact path="/services/" component={Services}/>
-        <Route exact path="/Services/:slug" component={SingleService}/>
+        <Route exact path="/solutions/" component={Solutions}/>
+        <Route exact path="/solutions/:slug" component={SingleSolution}/>
         <Route exact path="/error" component={Error}/>
         <Route component={Error} />
       </Switch>
