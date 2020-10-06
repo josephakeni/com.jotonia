@@ -13,13 +13,13 @@ pipeline {
 
 		stage ("build docker image") { 
 			steps {
-			sh 'sudo docker build -f Dockerfile.prod -t jotonia:1.1 . '
+			sh 'sudo docker build -f Dockerfile.prod -t jotonia:1.2 . '
 		}
 	}
 		stage ('test container') {
 			steps {
 			sh '''
-			id=$(sudo docker run -p 1337:80 -d jotonia:1.1)
+			id=$(sudo docker run -p 1337:80 -d jotonia:1.2)
 			curl localhost:1337 | grep "jotonia" && echo "Test successfull"
 			echo "deleting container"
 			sudo docker rm -f $id
@@ -31,11 +31,11 @@ pipeline {
                         steps {
                  
 			echo "tagging image"
-			sh 'sudo docker tag jotonia:1.1 jakeni/jotoniaapp1:v1'
+			sh 'sudo docker tag jotonia:1.2 jakeni/jotoniaapp1:v2'
 			withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'pass', usernameVariable: 'user')]) {
   			echo "pushing container to hub"
 			sh 'sudo docker login -u jakeni -p $pass'
-  			sh 'sudo docker push jakeni/jotoniaapp1:v1'
+  			sh 'sudo docker push jakeni/jotoniaapp1:v2'
   			sh 'sudo docker logout'
 			echo "clean up container, deleting containers"
 			sh 'sudo docker rmi -f $(sudo docker images -a -q)'
@@ -44,8 +44,7 @@ pipeline {
         }
 		stage ("deploy docker image") {
                         steps {
-						sh 'ssh jakeni@192.168.33.12 sudo docker rm -f $(sudo docker ps -a -q)'
-                        sh 'ssh jakeni@192.168.33.12 sudo docker run -d --rm -p 80:80 jakeni/jotoniaapp1:v1 '
+                        sh 'ssh jakeni@192.168.33.12 sudo docker run -d --rm -p 80:80 jakeni/jotoniaapp1:v2 '
                 }
         }
 
