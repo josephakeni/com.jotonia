@@ -38,7 +38,7 @@ pipeline {
   			sh 'sudo docker push jakeni/jotoniaapp1:v1'
   			sh 'sudo docker logout'
 			echo "clean up container, deleting containers"
-			sudo docker rmi -f $(sudo docker images -a -q)
+			sh 'sudo docker rmi -f $(sudo docker images -a -q)'
 			}	      
                 }
         }
