@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import defaultBcg from '../images/room-1.jpeg'
+import defaultBcg from '../images/defaultBcg.jpeg'
 import Hero from '../components/Hero'
 import Banner from '../components/Banner'
 import {Link} from 'react-router-dom'
 import {SolutionContext} from '../context'
+import StyledHero from '../components/StyledHero'
 
 export default class SingleSolution extends Component {
     constructor(props) {
@@ -28,14 +29,34 @@ export default class SingleSolution extends Component {
         }
         // update this!!!
         const {name,description,capacity,size,price,extras,breakfast,pets,images} = solution
+        const [mainImg, ...defaultImg] = images;
         return (
-            <Hero hero="roomsHero">
+            <>
+            <StyledHero img={mainImg || this.state.defaultBcg}>
                 <Banner title={`${name} solution`}>
                     <Link to='/solutions' className='btn-primary'>
                         back to solutions
                     </Link>
                 </Banner>
-            </Hero>
+            </StyledHero>
+            <section className="single-room">
+                {/* <div className="single-room-images">
+                    {defaultImg.map((item, index) => {
+                        return <img key={index} src={item} alt={name} />
+                    })}
+                </div> */}
+                <div className="signle-room-info">
+                    <article className="desc">
+                        <h3>{name}</h3>
+                        <p>{description}</p>
+                    </article>
+                    {/* <article className="info">
+                        <h3>info</h3>
+                        <p>price: {price}</p>
+                    </article> */}
+                </div>
+            </section>
+            </>
         )
     }
 }

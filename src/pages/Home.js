@@ -4,6 +4,7 @@ import Banner from "../components/Banner"
 import {Link} from "react-router-dom"
 import About from '../components/About'
 import FeaturedSolutions from '../components/FeaturedSolutions'
+import Button from '../components/StyledHero'
 
 export default function Home() {
     return (
@@ -17,6 +18,7 @@ export default function Home() {
             </Hero>
             <About />
             <FeaturedSolutions />
+            {/* <Button>Hello</Button> */}
         </>
     )
 }

@@ -52,4 +52,12 @@ class SolutionProvider extends Component {
 
 const SolutionConsumer = SolutionContext.Consumer;
 
+export function withSolutionConsumer(Component) {
+    return function ConsumerWrapper(props){
+        return <SolutionConsumer>
+            {value => <Component {...props} context={value}/>}
+        </SolutionConsumer>
+    }
+}
+
 export {SolutionProvider, SolutionConsumer, SolutionContext};

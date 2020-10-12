@@ -31,11 +31,11 @@ pipeline {
                         steps {
                  
 			echo "tagging image"
-			sh 'sudo docker tag jotonia:1.2 jakeni/jotoniaapp1:v3'
+			sh 'sudo docker tag jotonia:1.2 jakeni/jotoniaapp1:v4'
 			withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'pass', usernameVariable: 'user')]) {
   			echo "pushing container to hub"
 			sh 'sudo docker login -u jakeni -p $pass'
-  			sh 'sudo docker push jakeni/jotoniaapp1:v3'
+  			sh 'sudo docker push jakeni/jotoniaapp1:v4'
   			sh 'sudo docker logout'
 			echo "clean up container, deleting containers"
 			sh 'sudo docker rmi -f $(sudo docker images -a -q)'
@@ -47,7 +47,7 @@ pipeline {
 			echo "Cleaning up before deployment"
 			sh 'ssh jakeni@192.168.33.12 sudo docker rm -f $(ssh jakeni@192.168.33.12 sudo docker ps -a -q) '
 			echo "Deployning latest version"
-                        sh 'ssh jakeni@192.168.33.12 sudo docker run -d --rm -p 80:80 jakeni/jotoniaapp1:v3 '
+                        sh 'ssh jakeni@192.168.33.12 sudo docker run -d --rm -p 80:80 jakeni/jotoniaapp1:v4 '
                 }
         }
 
