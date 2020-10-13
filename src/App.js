@@ -10,6 +10,7 @@ import SingleSolution from './pages/SingleSolution'
 import Navbar from './components/Navbar'
 
 import {Route, Switch} from 'react-router-dom'
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/error" component={Error}/>
         <Route component={Error} />
       </Switch>
+      <Footer />
     </>
   );
 }

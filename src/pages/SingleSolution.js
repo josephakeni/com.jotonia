@@ -28,7 +28,7 @@ export default class SingleSolution extends Component {
             </div>
         }
         // update this!!!
-        const {name,description,capacity,size,price,extras,breakfast,pets,images} = solution
+        const {name,description,description1,description2,description3,images} = solution
         const [mainImg, ...defaultImg] = images;
         return (
             <>
@@ -45,10 +45,13 @@ export default class SingleSolution extends Component {
                         return <img key={index} src={item} alt={name} />
                     })}
                 </div> */}
-                <div className="signle-room-info">
+                <div className="single-room-info">
                     <article className="desc">
                         <h3>{name}</h3>
                         <p>{description}</p>
+                        <p>{description1}</p>
+                        <p>{description2}</p>
+                        <p>{description3}</p>
                     </article>
                     {/* <article className="info">
                         <h3>info</h3>

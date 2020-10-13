@@ -1,11 +1,11 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import defaultImg from '../images/room-1.jpeg'
+import defaultImg from '../images/defaultBcg.jpeg'
 import PropTypes from 'prop-types'
 import Solutions from '../pages/Solutions';
 
 export default function Solution({solution}) {
-    const{name,slug,images,price} = solution;
+    const{name,slug,images,price,description,shortDesc} = solution;
 
     return (
         <article className="room">
@@ -20,6 +20,7 @@ export default function Solution({solution}) {
                 </Link>
             </div>
             <p className="room-info">{name}</p>
+            <p>{shortDesc}</p>
         </article>
     )
 }

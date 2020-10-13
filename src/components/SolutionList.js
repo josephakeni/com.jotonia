@@ -6,7 +6,7 @@ export default function SolutionList({solutions}) {
     if (solutions.length === 0) {
         return (
             <div className="empty-search">
-                <h3>we do not offer such</h3>
+                <h3>we do not offer such solution</h3>
             </div>
         )
     }
