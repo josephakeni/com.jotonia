@@ -88,6 +88,10 @@ export default [
       featured: true,
       description:
         "Staying ahead of competitor is a key component for business success in the increasely competitive business world to remain and stay relevant to meet the market needs. We have a dedicated team of people with a passion and expertise for market research to provide our clients with data and information of their target market or customers.",
+      description1:
+        "Here at Jotonia Consulting Limited, we have expert hands with great industry knowledge providing our clients with professional advice on how they can establish and grow their businesses and organisations. We also help our clients with innovative ways on how they can stay ahead of their competitors.",
+      description2:
+        "We are always available to you to ensure you have the necessary information and advice to help you make informed decisions that will keep your businesses and organisations flying without wings.",
       extras: [
         "Plush pillows and breathable bed linens",
         "Soft, oversized bath towels",
